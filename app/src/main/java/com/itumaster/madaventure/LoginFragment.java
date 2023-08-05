@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -63,12 +64,13 @@ public class LoginFragment extends Fragment {
 
     public interface OnLoginSuccessListener {
         void onLoginSuccess(String username);
+
     }
 
     public interface OnButtonClickListener {
         void onButtonClicked(String username);
-
     }
+
 
     @Override
     public void onAttach(@NonNull Context context) {
@@ -92,6 +94,11 @@ public class LoginFragment extends Fragment {
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_login, container, false);
 
+        MainActivity mainActivity = (MainActivity) getActivity();
+        if (mainActivity != null) {
+            mainActivity.hideButtons();
+        }
+
         Button buttonB1 = rootView.findViewById(R.id.loginButton);
         buttonB1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -99,8 +106,23 @@ public class LoginFragment extends Fragment {
                 // Vérifiez les informations du formulaire et obtenez le nom d'utilisateur
                 String username = getUsernameFromForm(); // Remplacez par votre code
 
+                SessionManager.getInstance().setLoggedInUser(username);
+
                 // Appelez la méthode de l'interface pour diriger vers le fragment Accueil
                 buttonClickListener.onButtonClicked(username);
+            }
+        });
+
+        Button signupButton = rootView.findViewById(R.id.signupButton);
+        signupButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                SignupFragment signupFragment = new SignupFragment();
+                FragmentManager fragmentManager = getParentFragmentManager();
+                fragmentManager.beginTransaction()
+                        .replace(R.id.fragmentContainer, signupFragment)
+                        .addToBackStack(null)
+                        .commit();
             }
         });
 

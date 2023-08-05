@@ -14,6 +14,7 @@ public class MainActivity extends AppCompatActivity implements LoginFragment.OnB
     private AccueilFragment accueilFragment;
     private DetailFragment detailFragment;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,10 +25,8 @@ public class MainActivity extends AppCompatActivity implements LoginFragment.OnB
         detailFragment = new DetailFragment();
 
         getSupportFragmentManager().beginTransaction()
-                .replace(R.id.fragmentContainer, loginFragment)
+                .replace(R.id.fragmentContainer, accueilFragment)
                 .commit();
-
-
 
         Button btnAccueil = findViewById(R.id.button);
         btnAccueil.setOnClickListener(new View.OnClickListener() {
@@ -58,15 +57,6 @@ public class MainActivity extends AppCompatActivity implements LoginFragment.OnB
                         .commit();
             }
         });
-
-        Fragment currentFragment = getSupportFragmentManager().findFragmentById(R.id.fragmentContainer);
-        if (currentFragment instanceof LoginFragment) {
-            btnAccueil.setVisibility(View.GONE);
-            btnDetail.setVisibility(View.GONE);
-            btnLogin.setVisibility(View.GONE);
-        }
-
-
     }
 
     @Override
@@ -79,5 +69,14 @@ public class MainActivity extends AppCompatActivity implements LoginFragment.OnB
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.fragmentContainer, accueilFragment)
                 .commit();
+    }
+
+    public void hideButtons() {
+        Button btnAccueil = findViewById(R.id.button);
+        Button btnDetail = findViewById(R.id.button2);
+        Button btnLogin = findViewById(R.id.button3);
+        btnAccueil.setVisibility(View.GONE);
+        btnDetail.setVisibility(View.GONE);
+        btnLogin.setVisibility(View.GONE);
     }
 }

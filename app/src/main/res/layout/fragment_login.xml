@@ -1,34 +1,147 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FEF1E0"
     android:orientation="vertical"
     android:padding="16dp">
 
-    <EditText
-        android:id="@+id/usernameEditText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Username"
-        android:inputType="text" />
+    <RelativeLayout
+        android:id="@+id/login_ou_in"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginLeft="100dp"
+        android:background="#FEF3E5"
+        android:clipToOutline="true">
 
-    <EditText
-        android:id="@+id/passwordEditText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Password"
-        android:inputType="textPassword" />
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/logo_groupe" />
+    </RelativeLayout>
 
-    <Button
-        android:id="@+id/loginButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Login" />
-    <Button
-        android:id="@+id/skipButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="passer" />
+    <RelativeLayout
+        android:id="@+id/input_email"
+        android:layout_width="276dp"
+        android:layout_height="40dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="42dp"
+        android:layout_marginTop="10dp"
+        android:clipToOutline="true">
+
+
+        <EditText
+            android:id="@+id/usernameEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Username"
+            android:inputType="text"
+            android:minHeight="48dp"
+            tools:ignore="TouchTargetSizeCheck" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/input_password"
+        android:layout_width="276dp"
+        android:layout_height="40dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="42dp"
+        android:layout_marginTop="10dp"
+        android:clipToOutline="true">
+
+        <EditText
+            android:id="@+id/passwordEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:minHeight="48dp"
+            tools:ignore="TouchTargetSizeCheck" />
+    </RelativeLayout>
+
+    <!-- Auto layout, variables, and unit scale are not yet supported -->
+    <RelativeLayout
+        android:id="@+id/login_but"
+        android:layout_width="193dp"
+        android:layout_height="40dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="83dp"
+        android:layout_marginTop="10dp"
+        android:background="#000000"
+        android:clipToOutline="true">
+
+        <Button
+            android:id="@+id/loginButton"
+            android:layout_width="193dp"
+            android:layout_height="40dp"
+            android:backgroundTint="#000000"
+            android:minHeight="48dp"
+            android:text="Login"
+            tools:ignore="TouchTargetSizeCheck" />
+    </RelativeLayout>
+
+    <!-- Auto layout, variables, and unit scale are not yet supported -->
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="385dp"
+        android:background="@drawable/baobab_opac">
+
+        <RelativeLayout
+            android:id="@+id/signup_but"
+            android:layout_width="193dp"
+            android:layout_height="40dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="83dp"
+            android:layout_marginTop="220dp"
+            android:background="#2980B9"
+            android:clipToOutline="true">
+
+            <Button
+                android:id="@+id/signupButton"
+                android:layout_width="193dp"
+                android:layout_height="40dp"
+                android:backgroundTint="#2980B9"
+                android:text="inscription"
+                tools:ignore="TouchTargetSizeCheck" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/outlined_but"
+            android:layout_width="193dp"
+            android:layout_height="40dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="83dp"
+            android:layout_marginTop="305dp"
+            android:background="#FFFFFF"
+            android:clipToOutline="true">
+
+            <Button
+                android:id="@+id/skipButton"
+                android:layout_width="193dp"
+                android:layout_height="40dp"
+                android:backgroundTint="#FFFFFF"
+                android:text="passer"
+                android:textColor="@color/black"
+                tools:ignore="TouchTargetSizeCheck" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="70dp"
+            android:layout_marginTop="180dp"
+            android:text="Vous n'avez pas de compte?"
+            android:textSize="20sp" />
+    </RelativeLayout>
 
 </LinearLayout>
