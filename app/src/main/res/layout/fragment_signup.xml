@@ -1,14 +1,154 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SignupFragment">
+    tools:context=".SignupFragment"
+    android:background="#FEF1E0"
+    android:orientation="vertical"
+    android:padding="16dp" >
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginLeft="100dp"
+        android:src="@drawable/logo_groupe" />
+
+    <RelativeLayout
+        android:id="@+id/input_nom"
+        android:layout_width="276dp"
+        android:layout_height="79dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="41dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="180dp"
+        android:clipToOutline="true"
+        >
+
+        <EditText
+            android:id="@+id/nameEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nom"
+            android:inputType="text"
+            android:minHeight="48dp"
+            tools:ignore="TouchTargetSizeCheck" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/input_preno"
+        android:layout_width="276dp"
+        android:layout_height="79dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="41dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="262dp"
+        android:clipToOutline="true"
+        >
+
+        <EditText
+            android:id="@+id/firstnameText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Prénom(s)"
+            android:inputType="text"
+            android:minHeight="48dp"
+            tools:ignore="TouchTargetSizeCheck" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/input_date_"
+        android:layout_width="276dp"
+        android:layout_height="79dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="41dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="344dp"
+        android:clipToOutline="true"
+        >
+
+        <EditText
+            android:id="@+id/datenaissanceText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Date de naissance"
+            android:inputType="text"
+            android:minHeight="48dp"
+            tools:ignore="TouchTargetSizeCheck" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/input_mail"
+        android:layout_width="276dp"
+        android:layout_height="79dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="41dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="426dp"
+        android:clipToOutline="true"
+        >
+
+        <EditText
+            android:id="@+id/emailText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Email"
+            android:inputType="text"
+            android:minHeight="48dp"
+            tools:ignore="TouchTargetSizeCheck" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/input_pwd"
+        android:layout_width="276dp"
+        android:layout_height="79dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="41dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="508dp"
+        android:clipToOutline="true"
+        >
+
+        <EditText
+            android:id="@+id/passwordText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Mot de passe"
+            android:inputType="text"
+            android:minHeight="48dp"
+            tools:ignore="TouchTargetSizeCheck" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/signup_but"
+        android:layout_width="193dp"
+        android:layout_height="40dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="83dp"
+        android:layout_marginTop="599dp"
+        android:background="#2980B9"
+        android:clipToOutline="true">
+
+        <Button
+            android:id="@+id/signupButton"
+            android:layout_width="193dp"
+            android:layout_height="40dp"
+            android:backgroundTint="#2980B9"
+            android:text="inscription"
+            tools:ignore="TouchTargetSizeCheck" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/myLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="385dp"
+        android:background="@drawable/baobab_opac"
+        android:layout_marginTop="320dp">
+    </RelativeLayout>
+
 
 </FrameLayout>
