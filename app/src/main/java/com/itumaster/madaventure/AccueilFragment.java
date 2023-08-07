@@ -1,13 +1,22 @@
 package com.itumaster.madaventure;
 
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -24,6 +33,9 @@ public class AccueilFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    private LoginFragment loginFragment;
+    private ProfilFragment profilFragment;
 
     public AccueilFragment() {
         // Required empty public constructor
@@ -56,6 +68,12 @@ public class AccueilFragment extends Fragment {
         }
     }
 
+    private static final int[] imageResources = {
+            R.drawable.baobab,
+            R.drawable.antananarivo,
+            R.drawable.baobab,
+    };
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -64,12 +82,55 @@ public class AccueilFragment extends Fragment {
 
         View rootView = inflater.inflate(R.layout.fragment_accueil, container, false);
 
-        Bundle bundle = getArguments();
+        /*Bundle bundle = getArguments();
         if (bundle != null) {
             String username = bundle.getString("username");
             TextView textView = rootView.findViewById(R.id.textView);
             textView.setText("Bonjour " + username);
+        }*/
+
+        LinearLayout imageContainer = rootView.findViewById(R.id.imageContainer);
+
+        for (int imageResId : imageResources) {
+            CardView cardView = new CardView(requireContext());
+            LinearLayout.LayoutParams cardLayoutParams = new LinearLayout.LayoutParams(
+                    getResources().getDimensionPixelSize(R.dimen.card_width),
+                    LinearLayout.LayoutParams.WRAP_CONTENT);
+            cardLayoutParams.setMargins(20, 0, 20, 0); // Set margin to create spacing between CardViews
+            cardView.setLayoutParams(cardLayoutParams);
+            int cornerRadius = getResources().getDimensionPixelSize(R.dimen.card_corner_radius);
+            Drawable backgroundDrawable = cardView.getBackground();
+            if (backgroundDrawable instanceof GradientDrawable) {
+                GradientDrawable gradientDrawable = (GradientDrawable) backgroundDrawable;
+                gradientDrawable.setCornerRadius(cornerRadius);
+            }
+
+
+            ImageView imageView = new ImageView(requireContext());
+            LinearLayout.LayoutParams imageLayoutParams = new LinearLayout.LayoutParams(
+                    LinearLayout.LayoutParams.WRAP_CONTENT,
+                    getResources().getDimensionPixelSize(R.dimen.image_height));
+            imageView.setLayoutParams(imageLayoutParams);
+            imageView.setImageResource(imageResId);
+
+            cardView.addView(imageView);
+            imageContainer.addView(cardView);
         }
+
+
+        loginFragment = new LoginFragment();
+        profilFragment = new ProfilFragment();
+        FloatingActionButton userBtn = rootView.findViewById(R.id.userbutton);
+        userBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FragmentManager fragmentManager = getParentFragmentManager();
+                fragmentManager.beginTransaction()
+                        .replace(R.id.fragmentContainer, profilFragment)
+                        .addToBackStack(null)
+                        .commit();
+            }
+        });
 
         return rootView;
     }

@@ -8,14 +8,14 @@ import androidx.fragment.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
+import android.widget.Button;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link DetailFragment#newInstance} factory method to
+ * Use the {@link ProvinceFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class DetailFragment extends Fragment {
+public class ProvinceFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -26,7 +26,9 @@ public class DetailFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public DetailFragment() {
+    private FormlieuFragment formlieuFragment;
+
+    public ProvinceFragment() {
         // Required empty public constructor
     }
 
@@ -36,11 +38,11 @@ public class DetailFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment DetailFragment.
+     * @return A new instance of fragment ProvinceFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static DetailFragment newInstance(String param1, String param2) {
-        DetailFragment fragment = new DetailFragment();
+    public static ProvinceFragment newInstance(String param1, String param2) {
+        ProvinceFragment fragment = new ProvinceFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -60,16 +62,16 @@ public class DetailFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_detail, container, false);
+        View rootView =inflater.inflate(R.layout.fragment_province, container, false);
 
-        ImageButton backButton = rootView.findViewById(R.id.backButton);
-        backButton.setOnClickListener(new View.OnClickListener() {
+        formlieuFragment = new FormlieuFragment();
+        Button voirplusBtn = rootView.findViewById(R.id.voirplus);
+        voirplusBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                AccueilFragment accueilFragment = new AccueilFragment();
                 FragmentManager fragmentManager = getParentFragmentManager();
                 fragmentManager.beginTransaction()
-                        .replace(R.id.fragmentContainer, accueilFragment)
+                        .replace(R.id.fragmentContainer, formlieuFragment)
                         .addToBackStack(null)
                         .commit();
             }

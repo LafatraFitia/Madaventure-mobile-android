@@ -1,17 +1,27 @@
 package com.itumaster.madaventure;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.itumaster.madaventure.model.ApiResponse;
+import com.itumaster.madaventure.model.Utilisateur;
+import com.itumaster.madaventure.model.minterface.ApiResponseListener;
+import com.itumaster.madaventure.service.AuthentificationService;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -24,12 +34,17 @@ public class LoginFragment extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+    private static final String TAG = "Login Fragment - Log";
 
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
 
     private OnButtonClickListener buttonClickListener;
+
+
+
+    private TextView errorMessageText;
 
     public LoginFragment() {
         // Required empty public constructor
@@ -62,11 +77,6 @@ public class LoginFragment extends Fragment {
         }
     }
 
-    public interface OnLoginSuccessListener {
-        void onLoginSuccess(String username);
-
-    }
-
     public interface OnButtonClickListener {
         void onButtonClicked(String username);
     }
@@ -84,8 +94,13 @@ public class LoginFragment extends Fragment {
 
     private String getUsernameFromForm() {
         EditText usernameEditText = getView().findViewById(R.id.usernameEditText); // Utilisez le bon ID pour votre champ de nom d'utilisateur
-        String username = usernameEditText.getText().toString().trim();
-        return username;
+        return usernameEditText.getText().toString().trim();
+    }
+
+    private String getPasswordFromForm() {
+        EditText usernameEditText = getView().findViewById(R.id.passwordEditText); // Utilisez le bon ID pour votre champ de nom d'utilisateur
+        String password = usernameEditText.getText().toString();
+        return password;
     }
 
 
@@ -94,22 +109,28 @@ public class LoginFragment extends Fragment {
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_login, container, false);
 
-        MainActivity mainActivity = (MainActivity) getActivity();
+        /*MainActivity mainActivity = (MainActivity) getActivity();
         if (mainActivity != null) {
             mainActivity.hideButtons();
-        }
+        }*/
 
-        Button buttonB1 = rootView.findViewById(R.id.loginButton);
-        buttonB1.setOnClickListener(new View.OnClickListener() {
+        errorMessageText = rootView.findViewById(R.id.errorMessage);
+
+        Button buttonLogin = rootView.findViewById(R.id.loginButton);
+        buttonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // Vérifiez les informations du formulaire et obtenez le nom d'utilisateur
                 String username = getUsernameFromForm(); // Remplacez par votre code
+                String password = getPasswordFromForm();
 
-                SessionManager.getInstance().setLoggedInUser(username);
+                performLogin();
 
-                // Appelez la méthode de l'interface pour diriger vers le fragment Accueil
-                buttonClickListener.onButtonClicked(username);
+//
+//                SessionManager.getInstance().setLoggedInUser(username);
+//
+//                // Appelez la méthode de l'interface pour diriger vers le fragment Accueil
+//                buttonClickListener.onButtonClicked(username);
             }
         });
 
@@ -128,4 +149,48 @@ public class LoginFragment extends Fragment {
 
         return rootView;
     }
+
+    private void performLogin() {
+        String email = getUsernameFromForm();
+        String password = getPasswordFromForm();
+
+        if (TextUtils.isEmpty(email) || TextUtils.isEmpty(password)) {
+            // Gérer le cas où l'email ou le mot de passe est vide
+
+            errorMessageText.setBackgroundColor(getResources().getColor(R.color.alizarin, getContext().getTheme()));
+            errorMessageText.setText("Veuillez remplir les champs.");
+            errorMessageText.setTextColor(getResources().getColor(R.color.white, getContext().getTheme()));
+            errorMessageText.setVisibility(View.VISIBLE);
+            return;
+        }
+
+        Utilisateur utilisateur = new Utilisateur(email, password);
+        try {
+            AuthentificationService.login(utilisateur, new ApiResponseListener<Utilisateur>() {
+
+                @Override
+                public void onSuccess(Utilisateur loggedInUser) {
+                    // Gérer la connexion réussie
+                    errorMessageText.setBackgroundColor(getResources().getColor(R.color.emarald, getContext().getTheme()));
+                    errorMessageText.setText("Success");
+                    errorMessageText.setTextColor(getResources().getColor(R.color.white, getContext().getTheme()));
+                    errorMessageText.setVisibility(View.VISIBLE);
+                }
+
+                @Override
+                public void onError(String errorMessage) {
+                    // Gérer l'échec de la connexion
+                    errorMessageText.setBackgroundColor(getResources().getColor(R.color.alizarin, getContext().getTheme()));
+                    errorMessageText.setText("Login ou mot de passe incorrecte.");
+                    errorMessageText.setTextColor(getResources().getColor(R.color.white, getContext().getTheme()));
+                    errorMessageText.setVisibility(View.VISIBLE);
+                }
+            });
+        } catch (Exception ee) {
+            Log.d(TAG, "performLogin: "+ee.getMessage());
+        }
+        
+
+    }
+
 }

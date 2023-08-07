@@ -24,7 +24,7 @@
         android:layout_alignParentLeft="true"
         android:layout_marginLeft="41dp"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="180dp"
+        android:layout_marginTop="160dp"
         android:clipToOutline="true"
         >
 
@@ -45,7 +45,7 @@
         android:layout_alignParentLeft="true"
         android:layout_marginLeft="41dp"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="262dp"
+        android:layout_marginTop="242dp"
         android:clipToOutline="true"
         >
 
@@ -66,7 +66,7 @@
         android:layout_alignParentLeft="true"
         android:layout_marginLeft="41dp"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="344dp"
+        android:layout_marginTop="324dp"
         android:clipToOutline="true"
         >
 
@@ -87,7 +87,7 @@
         android:layout_alignParentLeft="true"
         android:layout_marginLeft="41dp"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="426dp"
+        android:layout_marginTop="406dp"
         android:clipToOutline="true"
         >
 
@@ -108,7 +108,7 @@
         android:layout_alignParentLeft="true"
         android:layout_marginLeft="41dp"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="508dp"
+        android:layout_marginTop="488dp"
         android:clipToOutline="true"
         >
 
@@ -145,7 +145,7 @@
     <RelativeLayout
         android:id="@+id/myLayout"
         android:layout_width="match_parent"
-        android:layout_height="385dp"
+        android:layout_height="wrap_content"
         android:background="@drawable/baobab_opac"
         android:layout_marginTop="320dp">
     </RelativeLayout>

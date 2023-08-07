@@ -1,7 +1,6 @@
 package com.itumaster.madaventure;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
 
 import android.os.Bundle;
 import android.view.View;
@@ -13,6 +12,9 @@ public class MainActivity extends AppCompatActivity implements LoginFragment.OnB
     private LoginFragment loginFragment;
     private AccueilFragment accueilFragment;
     private DetailFragment detailFragment;
+    private FormlieuFragment formlieuFragment;
+    private ProvinceFragment provinceFragment;
+
 
 
     @Override
@@ -23,12 +25,14 @@ public class MainActivity extends AppCompatActivity implements LoginFragment.OnB
         loginFragment = new LoginFragment();
         accueilFragment = new AccueilFragment();
         detailFragment = new DetailFragment();
+        formlieuFragment = new FormlieuFragment();
+        provinceFragment = new ProvinceFragment();
 
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.fragmentContainer, accueilFragment)
                 .commit();
 
-        Button btnAccueil = findViewById(R.id.button);
+        /*Button btnAccueil = findViewById(R.id.button);
         btnAccueil.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -57,6 +61,16 @@ public class MainActivity extends AppCompatActivity implements LoginFragment.OnB
                         .commit();
             }
         });
+
+        Button btnTest = findViewById(R.id.button4);
+        btnTest.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.fragmentContainer, provinceFragment)
+                        .commit();
+            }
+        });*/
     }
 
     @Override
@@ -71,12 +85,14 @@ public class MainActivity extends AppCompatActivity implements LoginFragment.OnB
                 .commit();
     }
 
-    public void hideButtons() {
+    /*public void hideButtons() {
         Button btnAccueil = findViewById(R.id.button);
         Button btnDetail = findViewById(R.id.button2);
         Button btnLogin = findViewById(R.id.button3);
+        Button btnTest = findViewById(R.id.button4);
         btnAccueil.setVisibility(View.GONE);
         btnDetail.setVisibility(View.GONE);
         btnLogin.setVisibility(View.GONE);
-    }
+        btnTest.setVisibility(View.GONE);
+    }*/
 }
