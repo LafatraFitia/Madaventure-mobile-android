@@ -6,192 +6,208 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".FormlieuFragment">
 
-    <RelativeLayout
-        android:id="@+id/input_nom"
-        android:layout_width="400dp"
-        android:layout_height="60dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="100dp"
-        android:clipToOutline="true"
-        >
 
-        <EditText
-            android:id="@+id/nom"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/imageView9"
+            android:layout_width="160dp"
+            android:layout_height="157dp"
+            android:layout_marginLeft="100dp"
+            android:src="@drawable/logo_groupe" />
+
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Nom"
-            android:inputType="text"
-            android:minHeight="48dp"
-            tools:ignore="TouchTargetSizeCheck" />
-    </RelativeLayout>
+            android:layout_height="match_parent">
 
-    <RelativeLayout
-        android:id="@+id/input_desc"
-        android:layout_width="400dp"
-        android:layout_height="60dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="160dp"
-        android:clipToOutline="true"
-        >
+            <RelativeLayout
+                android:id="@+id/input_nom"
+                android:layout_width="400dp"
+                android:layout_height="60dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="100dp"
+                android:clipToOutline="true">
 
-        <EditText
-            android:id="@+id/description"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Description"
-            android:inputType="text"
-            android:minHeight="48dp"
-            tools:ignore="TouchTargetSizeCheck" />
+                <EditText
+                    android:id="@+id/nom"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Nom"
+                    android:inputType="text"
+                    android:minHeight="48dp"
+                    tools:ignore="TouchTargetSizeCheck" />
+            </RelativeLayout>
 
-    </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/input_desc"
+                android:layout_width="400dp"
+                android:layout_height="60dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="160dp"
+                android:clipToOutline="true">
 
-    <RelativeLayout
-        android:id="@+id/input_date_"
-        android:layout_width="400dp"
-        android:layout_height="60dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="220dp"
-        android:clipToOutline="true"
-        >
+                <EditText
+                    android:id="@+id/description"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Description"
+                    android:inputType="text"
+                    android:minHeight="48dp"
+                    tools:ignore="TouchTargetSizeCheck" />
 
-        <EditText
-            android:id="@+id/input_corps"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Corps"
-            android:inputType="text"
-            android:minHeight="48dp"
-            tools:ignore="TouchTargetSizeCheck" />
-    </RelativeLayout>
+            </RelativeLayout>
 
-    <RelativeLayout
-        android:id="@+id/input_couverture_image"
-        android:layout_width="400dp"
-        android:layout_height="60dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="280dp"
-        android:clipToOutline="true"
-        >
+            <RelativeLayout
+                android:id="@+id/input_date_"
+                android:layout_width="400dp"
+                android:layout_height="60dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="220dp"
+                android:clipToOutline="true">
 
-        <LinearLayout
-            android:id="@+id/layoutCouverture"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_below="@id/input_corps"
-            android:layout_marginTop="16dp"
-            tools:ignore="NotSibling">
+                <EditText
+                    android:id="@+id/input_corps"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Corps"
+                    android:inputType="text"
+                    android:minHeight="48dp"
+                    tools:ignore="TouchTargetSizeCheck" />
+            </RelativeLayout>
 
-        <TextView
-            android:id="@+id/textCouverture"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:text="Image pour la couverture: "
-            android:layout_gravity="center_vertical" />
+            <RelativeLayout
+                android:id="@+id/input_couverture_image"
+                android:layout_width="400dp"
+                android:layout_height="60dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="280dp"
+                android:clipToOutline="true">
 
-        <Button
-            android:id="@+id/uploadcouverture"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Upload"
-            android:layout_gravity="center_vertical" />
-    </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/layoutCouverture"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/input_corps"
+                    android:layout_marginTop="16dp"
+                    android:orientation="horizontal"
+                    tools:ignore="NotSibling">
 
+                    <TextView
+                        android:id="@+id/textCouverture"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="10dp"
+                        android:text="Image pour la couverture: " />
 
-</RelativeLayout>
-
-    <RelativeLayout
-        android:id="@+id/input_province"
-        android:layout_width="400dp"
-        android:layout_height="60dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="340dp"
-        android:clipToOutline="true"
-        >
-
-        <Spinner
-            android:id="@+id/province"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"/>
+                    <Button
+                        android:id="@+id/uploadcouverture"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:text="Upload"
+                        tools:ignore="TouchTargetSizeCheck" />
+                </LinearLayout>
 
 
-    </RelativeLayout>
+            </RelativeLayout>
 
-    <RelativeLayout
-        android:id="@+id/input_images"
-        android:layout_width="400dp"
-        android:layout_height="60dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="390dp"
-        android:clipToOutline="true"
-        >
+            <RelativeLayout
+                android:id="@+id/input_province"
+                android:layout_width="400dp"
+                android:layout_height="60dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="340dp"
+                android:clipToOutline="true">
 
-        <LinearLayout
-            android:id="@+id/layoutImages"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_below="@id/input_corps"
-            android:layout_marginTop="16dp"
-            tools:ignore="NotSibling">
+                <Spinner
+                    android:id="@+id/province"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/input_images"
+                android:layout_width="400dp"
+                android:layout_height="60dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="390dp"
+                android:clipToOutline="true">
+
+                <LinearLayout
+                    android:id="@+id/layoutImages"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/input_corps"
+                    android:layout_marginTop="16dp"
+                    android:orientation="horizontal"
+                    tools:ignore="NotSibling">
+
+                    <TextView
+                        android:id="@+id/textImages"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="10dp"
+                        android:text="Les images du lieu: " />
+
+                    <Button
+                        android:id="@+id/uploadimages"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:text="Upload"
+                        tools:ignore="TouchTargetSizeCheck" />
+                </LinearLayout>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/addLieuBtn"
+                android:layout_width="193dp"
+                android:layout_height="40dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="83dp"
+                android:layout_marginTop="460dp"
+                android:background="#2980B9"
+                android:clipToOutline="true">
+
+
+                <Button
+                    android:id="@+id/addLieu"
+                    android:layout_width="193dp"
+                    android:layout_height="40dp"
+                    android:backgroundTint="#2980B9"
+                    android:text="Ajouter"
+                    tools:ignore="TouchTargetSizeCheck" />
+            </RelativeLayout>
 
             <TextView
-                android:id="@+id/textImages"
+                android:id="@+id/titre"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:text="Les images du lieu: "
-                android:layout_gravity="center_vertical" />
-
-            <Button
-                android:id="@+id/uploadimages"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Upload"
-                android:layout_gravity="center_vertical" />
-        </LinearLayout>
-
-    </RelativeLayout>
-
-
-    <RelativeLayout
-        android:id="@+id/signup_but"
-        android:layout_width="193dp"
-        android:layout_height="40dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="83dp"
-        android:layout_marginTop="450dp"
-        android:background="#2980B9"
-        android:clipToOutline="true">
-
-
-        <Button
-            android:id="@+id/signupButton"
-            android:layout_width="193dp"
-            android:layout_height="40dp"
-            android:backgroundTint="#2980B9"
-            android:text="Ajouter"
-            tools:ignore="TouchTargetSizeCheck" />
-    </RelativeLayout>
-
-    <TextView
-        android:id="@+id/titre"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="50dp"
-        android:layout_marginTop="20dp"
-        android:text="Formulaire lieu"
-        android:textStyle="bold"
-        android:textSize="30sp"/>
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="30dp"
+                android:text="Formulaire lieu"
+                android:textSize="30sp"
+                android:textStyle="bold" />
+        </RelativeLayout>
+    </LinearLayout>
 
 
 </FrameLayout>

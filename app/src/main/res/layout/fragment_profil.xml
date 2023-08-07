@@ -44,14 +44,16 @@
             android:id="@+id/switchDarkMode"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Mode sombre"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="20dp"
             android:layout_marginLeft="60dp"
-            />
-
+            android:layout_marginTop="20dp"
+            android:minHeight="48dp"
+            android:text="Mode sombre" />
 
     </LinearLayout>
+
+
+
 
     <RelativeLayout
         android:id="@+id/myLayout"
@@ -78,5 +80,7 @@
             android:backgroundTint="#476677"
             android:text="Ajouter un lieu" />
     </RelativeLayout>
+
+
 
 </FrameLayout>

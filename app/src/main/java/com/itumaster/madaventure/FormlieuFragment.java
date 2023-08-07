@@ -67,17 +67,13 @@ public class FormlieuFragment extends Fragment {
 
         Spinner spinner = rootView.findViewById(R.id.province);
 
-        // Créez un tableau de chaînes pour les éléments du spinner
         String[] items = {"Option 1", "Option 2", "Option 3", "Option 4"};
 
-        // Créez un adaptateur pour le spinner
         ArrayAdapter<String> adapter = new ArrayAdapter<>(requireContext(),
                 android.R.layout.simple_spinner_item, items);
 
-        // Spécifiez la mise en page pour la liste déroulante
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
-        // Associez l'adaptateur au spinner
         spinner.setAdapter(adapter);
 
         Button uploadButtonCouverture = rootView.findViewById(R.id.uploadcouverture);
@@ -104,5 +100,7 @@ public class FormlieuFragment extends Fragment {
 
         return rootView;
     }
+
+
 
 }

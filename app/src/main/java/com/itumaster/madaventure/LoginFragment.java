@@ -42,8 +42,6 @@ public class LoginFragment extends Fragment {
 
     private OnButtonClickListener buttonClickListener;
 
-
-
     private TextView errorMessageText;
 
     public LoginFragment() {
@@ -126,11 +124,7 @@ public class LoginFragment extends Fragment {
 
                 performLogin();
 
-//
-//                SessionManager.getInstance().setLoggedInUser(username);
-//
-//                // Appelez la méthode de l'interface pour diriger vers le fragment Accueil
-//                buttonClickListener.onButtonClicked(username);
+                SessionManager.getInstance().setLoggedInUser(username);
             }
         });
 
@@ -155,7 +149,6 @@ public class LoginFragment extends Fragment {
         String password = getPasswordFromForm();
 
         if (TextUtils.isEmpty(email) || TextUtils.isEmpty(password)) {
-            // Gérer le cas où l'email ou le mot de passe est vide
 
             errorMessageText.setBackgroundColor(getResources().getColor(R.color.alizarin, getContext().getTheme()));
             errorMessageText.setText("Veuillez remplir les champs.");
@@ -170,16 +163,23 @@ public class LoginFragment extends Fragment {
 
                 @Override
                 public void onSuccess(Utilisateur loggedInUser) {
-                    // Gérer la connexion réussie
                     errorMessageText.setBackgroundColor(getResources().getColor(R.color.emarald, getContext().getTheme()));
                     errorMessageText.setText("Success");
                     errorMessageText.setTextColor(getResources().getColor(R.color.white, getContext().getTheme()));
                     errorMessageText.setVisibility(View.VISIBLE);
+
+
+
+                    AccueilFragment accueilFragment = new AccueilFragment();
+                    FragmentManager fragmentManager = getParentFragmentManager();
+                    fragmentManager.beginTransaction()
+                            .replace(R.id.fragmentContainer, accueilFragment)
+                            .addToBackStack(null)
+                            .commit();
                 }
 
                 @Override
                 public void onError(String errorMessage) {
-                    // Gérer l'échec de la connexion
                     errorMessageText.setBackgroundColor(getResources().getColor(R.color.alizarin, getContext().getTheme()));
                     errorMessageText.setText(errorMessage);
                     errorMessageText.setTextColor(getResources().getColor(R.color.white, getContext().getTheme()));

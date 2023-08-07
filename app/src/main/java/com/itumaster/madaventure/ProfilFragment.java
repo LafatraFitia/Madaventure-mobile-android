@@ -1,5 +1,7 @@
 package com.itumaster.madaventure;
 
+import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatDelegate;
@@ -12,6 +14,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.Switch;
+
+import java.util.Locale;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -31,6 +35,7 @@ public class ProfilFragment extends Fragment {
 
     private LoginFragment loginFragment;
     private ProvinceFragment provinceFragment;
+    private FormlieuFragment formlieuFragment;
 
     public ProfilFragment() {
         // Required empty public constructor
@@ -69,20 +74,6 @@ public class ProfilFragment extends Fragment {
         // Inflate the layout for this fragment
         View rootView =inflater.inflate(R.layout.fragment_profil, container, false);
 
-        Switch switchDarkMode = rootView.findViewById(R.id.switchDarkMode);
-        switchDarkMode.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked) {
-                    // Activer le mode sombre
-                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-                } else {
-                    // Activer le mode clair
-                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-                }
-            }
-        });
-
         loginFragment = new LoginFragment();
         Button logoutBtn = rootView.findViewById(R.id.logoutBtn);
         logoutBtn.setOnClickListener(new View.OnClickListener() {
@@ -96,19 +87,37 @@ public class ProfilFragment extends Fragment {
             }
         });
 
+        Switch switchDarkMode = rootView.findViewById(R.id.switchDarkMode);
+        switchDarkMode.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+                } else {
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+                }
+            }
+        });
+
         provinceFragment = new ProvinceFragment();
+        formlieuFragment = new FormlieuFragment();
         Button lieuBtn = rootView.findViewById(R.id.lieuBtn);
         lieuBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 FragmentManager fragmentManager = getParentFragmentManager();
                 fragmentManager.beginTransaction()
-                        .replace(R.id.fragmentContainer, provinceFragment)
+                        .replace(R.id.fragmentContainer, formlieuFragment)
                         .addToBackStack(null)
                         .commit();
             }
         });
 
+
+
+
         return rootView;
     }
+
+
 }
