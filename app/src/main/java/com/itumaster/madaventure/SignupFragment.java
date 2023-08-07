@@ -4,9 +4,19 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
+
+import com.itumaster.madaventure.model.Utilisateur;
+import com.itumaster.madaventure.model.minterface.ApiResponseListener;
+import com.itumaster.madaventure.service.AuthentificationService;
+
+import java.util.Date;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -19,6 +29,8 @@ public class SignupFragment extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+    
+    private static final String TAG = "Inscription ";
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -59,6 +71,80 @@ public class SignupFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_signup, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_signup, container, false);
+
+        Button signInButton = rootView.findViewById(R.id.signupButton);
+
+        signInButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Utilisateur userSign = new Utilisateur();
+                userSign.setNom(getNomFromForm());
+                userSign.setPrenom(getPrenomFromForm());
+                userSign.setProfilepicture("default");
+                userSign.setEmail(getEmailFromForm());
+                userSign.setPassword(getPasswordFromForm());
+                userSign.setUsername(userSign.getEmail());
+                userSign.setDatenaissance(new Date());
+                if (filledAll(userSign)) {
+                    performInscription(userSign);
+                } else {
+                    // TODO handle champs vide
+
+                }
+
+            }
+        });
+
+        return rootView;
     }
+
+    public void performInscription(Utilisateur signMe){
+        AuthentificationService.inscription(signMe, new ApiResponseListener<Utilisateur>() {
+            @Override
+            public void onSuccess(Utilisateur response) {
+                Log.d(TAG, "onSuccess: success inscription");
+            }
+
+            @Override
+            public void onError(String errorMessage) {
+                Log.d(TAG, "onError: inscription failed "+errorMessage);
+            }
+        });
+    }
+
+    public boolean filledAll(Utilisateur signMe) {
+        return (!signMe.getNom().isEmpty()
+                && !signMe.getEmail().isEmpty()
+                && !signMe.getPassword().isEmpty()
+        );
+    }
+
+    public String getNomFromForm() {
+        EditText usernameEditText = getView().findViewById(R.id.nameEditText); // Utilisez le bon ID pour votre champ de nom d'utilisateur
+        String password = usernameEditText.getText().toString();
+        return password;
+    }
+
+    public String getPrenomFromForm() {
+        EditText usernameEditText = getView().findViewById(R.id.firstnameText); // Utilisez le bon ID pour votre champ de nom d'utilisateur
+        return usernameEditText.getText().toString();
+    }
+
+    public String getDdnFromForm() {
+        EditText usernameEditText = getView().findViewById(R.id.datenaissanceText); // Utilisez le bon ID pour votre champ de nom d'utilisateur
+        return usernameEditText.getText().toString();
+    }
+
+    public String getEmailFromForm() {
+        EditText usernameEditText = getView().findViewById(R.id.emailText); // Utilisez le bon ID pour votre champ de nom d'utilisateur
+        return usernameEditText.getText().toString();
+    }
+
+    public String getPasswordFromForm() {
+        EditText usernameEditText = getView().findViewById(R.id.passwordText); // Utilisez le bon ID pour votre champ de nom d'utilisateur
+        return usernameEditText.getText().toString();
+    }
+
+
 }

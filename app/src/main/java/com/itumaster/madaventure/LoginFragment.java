@@ -181,7 +181,7 @@ public class LoginFragment extends Fragment {
                 public void onError(String errorMessage) {
                     // Gérer l'échec de la connexion
                     errorMessageText.setBackgroundColor(getResources().getColor(R.color.alizarin, getContext().getTheme()));
-                    errorMessageText.setText("Login ou mot de passe incorrecte.");
+                    errorMessageText.setText(errorMessage);
                     errorMessageText.setTextColor(getResources().getColor(R.color.white, getContext().getTheme()));
                     errorMessageText.setVisibility(View.VISIBLE);
                 }

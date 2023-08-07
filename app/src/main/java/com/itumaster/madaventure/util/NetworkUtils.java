@@ -1,12 +1,20 @@
 package com.itumaster.madaventure.util;
 
 import android.os.AsyncTask;
+
+import com.google.gson.Gson;
+import com.itumaster.madaventure.model.ApiResponse;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.IOException;
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
+import okhttp3.ResponseBody;
 
 public class NetworkUtils {
 
@@ -29,10 +37,23 @@ public class NetworkUtils {
                     String responseData = response.body().string();
                     callback.onSuccess(responseData);
                 } else {
-                    callback.onError("Request failed: " + response.code());
+                    ResponseBody resp = response.body();
+                    if (resp != null) {
+                        String bodystr = resp.string();
+                        JSONObject obj = new JSONObject(bodystr);
+                        if (obj.has("message")) {
+                            callback.onError(obj.getString("message"));
+                        } else {
+                            callback.onError("Un erreur s'est produite, veuillez reessayer plus tard.");
+                        }
+
+                    } else {
+                        callback.onError("Requete échoué. Veuillez reessayer plus tard.");
+                    }
+
                 }
-            } catch (IOException e) {
-                callback.onError(e.getMessage());
+            } catch (IOException | JSONException e) {
+                callback.onError("Un erreur s'est produite, veuillez reessayer plus tard.");
             }
         });
     }
@@ -53,10 +74,23 @@ public class NetworkUtils {
                     String responseData = response.body().string();
                     callback.onSuccess(responseData);
                 } else {
-                    callback.onError("Request failed: " + response.code());
+                    ResponseBody resp = response.body();
+                    if (resp != null) {
+                        String bodystr = resp.string();
+                        JSONObject obj = new JSONObject(bodystr);
+                        if (obj.has("message")) {
+                            callback.onError(obj.getString("message"));
+                        } else {
+                            callback.onError("Un erreur s'est produite, veuillez reessayer plus tard.");
+                        }
+
+                    } else {
+                        callback.onError("Requete échoué. Veuillez reessayer plus tard.");
+                    }
+
                 }
-            } catch (IOException e) {
-                callback.onError(e.getMessage());
+            } catch (IOException | JSONException e) {
+                callback.onError("Un erreur s'est produite, veuillez reessayer plus tard.");
             }
         });
     }
@@ -77,10 +111,23 @@ public class NetworkUtils {
                     String responseData = response.body().string();
                     callback.onSuccess(responseData);
                 } else {
-                    callback.onError("Request failed: " + response.code());
+                    ResponseBody resp = response.body();
+                    if (resp != null) {
+                        String bodystr = resp.string();
+                        JSONObject obj = new JSONObject(bodystr);
+                        if (obj.has("message")) {
+                            callback.onError(obj.getString("message"));
+                        } else {
+                            callback.onError("Un erreur s'est produite, veuillez reessayer plus tard.");
+                        }
+
+                    } else {
+                        callback.onError("Requete échoué. Veuillez reessayer plus tard.");
+                    }
+
                 }
-            } catch (IOException e) {
-                callback.onError(e.getMessage());
+            } catch (IOException | JSONException e) {
+                callback.onError("Un erreur s'est produite, veuillez reessayer plus tard.");
             }
         });
     }
@@ -98,10 +145,23 @@ public class NetworkUtils {
                     String responseData = response.body().string();
                     callback.onSuccess(responseData);
                 } else {
-                    callback.onError("Request failed: " + response.code());
+                    ResponseBody resp = response.body();
+                    if (resp != null) {
+                        String bodystr = resp.string();
+                        JSONObject obj = new JSONObject(bodystr);
+                        if (obj.has("message")) {
+                            callback.onError(obj.getString("message"));
+                        } else {
+                            callback.onError("Un erreur s'est produite, veuillez reessayer plus tard.");
+                        }
+
+                    } else {
+                        callback.onError("Requete échoué. Veuillez reessayer plus tard.");
+                    }
+
                 }
-            } catch (IOException e) {
-                callback.onError(e.getMessage());
+            } catch (IOException | JSONException e) {
+                callback.onError("Un erreur s'est produite, veuillez reessayer plus tard.");
             }
         });
     }

@@ -7,6 +7,8 @@ import com.google.gson.Gson;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.lang.reflect.Type;
+
 public class ApiResponse<T> {
     private boolean success;
     private String message;
@@ -59,7 +61,7 @@ public class ApiResponse<T> {
         return sb.toString();
     }
 
-    public static <T> ApiResponse<T> fromJson(String jsonString, Class<T> dataType) {
+    public static <T> ApiResponse<T> fromJson(String jsonString, Type dataType) {
         try {
             JSONObject jsonObject = new JSONObject(jsonString);
             ApiResponse<T> apiResponse = new ApiResponse<>();

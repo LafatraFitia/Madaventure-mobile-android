@@ -3,25 +3,29 @@ package com.itumaster.madaventure.model;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class Utilisateur {
+import java.util.Date;
+
+public class Utilisateur extends BaseModel {
     private String _id;
     private String nom;
     private String prenom;
-    private String datenaissance;
+    private Date datenaissance;
     private String username;
     private String email;
     private String password;
     private String profilepicture;
-    private String datecreation;
+    private Date datecreation;
     private String typeCompte;
     private int __v;
+
+
 
     public Utilisateur() {
         // Constructeur vide
     }
 
-    public Utilisateur(String nom, String prenom, String datenaissance, String username,
-                       String email, String password, String profilepicture, String datecreation,
+    public Utilisateur(String nom, String prenom, Date datenaissance, String username,
+                       String email, String password, String profilepicture, Date datecreation,
                        String typeCompte) {
         this.nom = nom;
         this.prenom = prenom;
@@ -34,7 +38,7 @@ public class Utilisateur {
         this.typeCompte = typeCompte;
     }
 
-    public Utilisateur(String id, String nom, String prenom, String datenaissance, String username, String email, String password, String profilepicture, String datecreation, String typeCompte) {
+    public Utilisateur(String id, String nom, String prenom, Date datenaissance, String username, String email, String password, String profilepicture, Date datecreation, String typeCompte) {
         this._id = id;
         this.nom = nom;
         this.prenom = prenom;
@@ -77,11 +81,11 @@ public class Utilisateur {
         this.prenom = prenom;
     }
 
-    public String getDatenaissance() {
+    public Date getDatenaissance() {
         return datenaissance;
     }
 
-    public void setDatenaissance(String datenaissance) {
+    public void setDatenaissance(Date datenaissance) {
         this.datenaissance = datenaissance;
     }
 
@@ -117,11 +121,11 @@ public class Utilisateur {
         this.profilepicture = profilepicture;
     }
 
-    public String getDatecreation() {
+    public Date getDatecreation() {
         return datecreation;
     }
 
-    public void setDatecreation(String datecreation) {
+    public void setDatecreation(Date datecreation) {
         this.datecreation = datecreation;
     }
 
@@ -143,26 +147,6 @@ public class Utilisateur {
 
     // Getters et setters pour tous les attributs
 
-    public static Utilisateur fromJson(String json) {
-        Utilisateur utilisateur = new Utilisateur();
-        try {
-            JSONObject jsonObject = new JSONObject(json);
-            utilisateur.set_id(jsonObject.getString("_id"));
-            utilisateur.setNom(jsonObject.getString("nom"));
-            utilisateur.setPrenom(jsonObject.getString("prenom"));
-            utilisateur.setDatenaissance(jsonObject.getString("datenaissance"));
-            utilisateur.setUsername(jsonObject.getString("username"));
-            utilisateur.setEmail(jsonObject.getString("email"));
-            utilisateur.setPassword(jsonObject.getString("password"));
-            utilisateur.setProfilepicture(jsonObject.getString("profilepicture"));
-            utilisateur.setDatecreation(jsonObject.getString("datecreation"));
-            utilisateur.setTypeCompte(jsonObject.getString("typeCompte"));
-            utilisateur.set__v(jsonObject.getInt("__v"));
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        return utilisateur;
-    }
 }
 
 

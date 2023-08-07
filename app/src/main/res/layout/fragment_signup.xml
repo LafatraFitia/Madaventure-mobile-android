@@ -123,31 +123,30 @@
     </RelativeLayout>
 
     <RelativeLayout
-        android:id="@+id/signup_but"
-        android:layout_width="193dp"
-        android:layout_height="40dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="83dp"
-        android:layout_marginTop="599dp"
-        android:background="#2980B9"
-        android:clipToOutline="true">
-
-        <Button
-            android:id="@+id/signupButton"
-            android:layout_width="193dp"
-            android:layout_height="40dp"
-            android:backgroundTint="#2980B9"
-            android:text="inscription"
-            tools:ignore="TouchTargetSizeCheck" />
-    </RelativeLayout>
-
-    <RelativeLayout
         android:id="@+id/myLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/baobab_opac"
         android:layout_marginTop="320dp">
+
+        <RelativeLayout
+            android:id="@+id/signup_but"
+            android:layout_width="193dp"
+            android:layout_height="50dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="83dp"
+            android:layout_marginTop="280dp"
+            android:clipToOutline="true">
+
+            <Button
+                android:id="@+id/signupButton"
+                android:layout_width="193dp"
+                android:layout_height="50dp"
+                android:backgroundTint="#2980B9"
+                android:text="inscription"
+                tools:ignore="TouchTargetSizeCheck" />
+        </RelativeLayout>
     </RelativeLayout>
 
 
